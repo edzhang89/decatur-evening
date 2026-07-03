@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#101c18">
+<title>A Decatur Evening · Eddie, Ashley, Lisa & Charlie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101c18; --card:#18261f; --card2:#1e2e26; --ink:#f2ead8;
+  --mut:#a9b8a8; --gold:#d4a95c; --coral:#e87a5a; --leaf:#7fae8a;
+  --line:rgba(212,169,92,.25); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 'Inter',-apple-system,sans-serif;padding-bottom:calc(84px + var(--safe-b))}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
+main{max-width:640px;margin:0 auto;padding:0 18px}
+
+/* hero */
+.hero{padding:56px 18px 34px;text-align:center;background:
+ radial-gradient(120% 90% at 50% 0%, #1c3129 0%, var(--bg) 70%)}
+.hero .kick{letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:var(--gold);font-weight:600}
+.hero h1{font-size:44px;font-weight:390;line-height:1.08;margin:14px 0 10px;font-style:italic}
+.hero p{color:var(--mut);font-size:15px;max-width:34ch;margin:0 auto}
+.hero .names{margin-top:16px;color:var(--gold);font-size:14px;letter-spacing:.08em}
+
+/* itinerary strip */
+.strip{display:flex;gap:8px;overflow-x:auto;padding:20px 2px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.stop{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;text-align:left;min-width:132px}
+.stop .t{color:var(--gold);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.stop .n{font-size:14px;font-weight:600;margin-top:2px}
+
+/* sections */
+section{padding:34px 0 6px}
+.sec-kick{color:var(--gold);letter-spacing:.26em;text-transform:uppercase;font-size:11px;font-weight:600}
+section h2{font-size:30px;font-weight:420;margin:6px 0 4px}
+.addr{color:var(--mut);font-size:13.5px;margin-bottom:14px}
+.addr a{color:var(--leaf);text-decoration:none;border-bottom:1px dotted var(--leaf)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0}
+.card h3{font-size:19px;font-weight:520;margin-bottom:8px}
+.card p{color:var(--mut);font-size:14.5px;margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.card strong{color:var(--ink)}
+.tag{display:inline-block;background:rgba(212,169,92,.14);color:var(--gold);border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;margin:0 6px 8px 0}
+
+ul.recs{list-style:none}
+ul.recs li{padding:11px 0;border-bottom:1px dashed rgba(169,184,168,.2);font-size:14.5px;color:var(--mut)}
+ul.recs li:last-child{border-bottom:none}
+ul.recs .d{color:var(--ink);font-weight:600}
+.price{color:var(--gold);font-weight:600;white-space:nowrap}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+
+.verdict{border-left:3px solid var(--gold);padding:10px 14px;background:rgba(212,169,92,.07);border-radius:0 12px 12px 0;font-size:14px;color:var(--ink);margin-top:12px}
+.verdict .serif{font-style:italic}
+
+/* value meter */
+.meter{display:flex;gap:3px;margin-left:8px;vertical-align:1px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(169,184,168,.25)}
+.dot.on{background:var(--leaf)}
+
+/* choose-your-adventure */
+.pick{border-radius:18px;padding:18px;margin:14px 0;border:1px solid var(--line)}
+.pick.dessert{background:linear-gradient(140deg,#2a2030,var(--card))}
+.pick.bar{background:linear-gradient(140deg,#1d2b33,var(--card))}
+.pick.music{background:linear-gradient(140deg,#33261d,var(--card))}
+.pick .lab{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.pick h3{font-size:21px;margin:4px 0 8px;font-weight:500}
+.pick p{color:var(--mut);font-size:14.5px;margin-bottom:8px}
+.pick .why{color:var(--ink);font-size:14px}
+
+/* footer + nav */
+footer{text-align:center;color:var(--mut);font-size:12.5px;padding:38px 18px 24px}
+nav{position:fixed;bottom:0;left:0;right:0;background:rgba(14,22,19,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 6px calc(10px + var(--safe-b))}
+nav a{color:var(--mut);text-decoration:none;font-size:11.5px;letter-spacing:.04em;text-align:center;padding:4px 10px;border-radius:10px;font-weight:500}
+nav a .ico{display:block;font-size:19px;margin-bottom:2px}
+nav a.on{color:var(--gold);background:rgba(212,169,92,.1)}
+.mapbtn{display:inline-block;margin-top:6px;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.06em}
+small.src{color:rgba(169,184,168,.6);font-size:11.5px;display:block;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="kick">One Night · Downtown Decatur</div>
+  <h1>A Decatur Evening</h1>
+  <p>Fire-cooked farm fare first, then whatever the night calls for — tiki, cones, cocktails, or a show. Everything within a 6-minute walk.</p>
+  <div class="names">Eddie · Ashley · Lisa · Charlie</div>
+  <main>
+  <div class="strip">
+    <a class="stop" href="#dd" style="text-decoration:none;color:inherit"><div class="t">7:00p</div><div class="n">🦌 Deer & the Dove</div></a>
+    <a class="stop" href="#after" style="text-decoration:none;color:inherit"><div class="t">~9:15p</div><div class="n">🌙 Your Call</div></a>
+  </div>
+  </main>
+</div>
+
+<main>
+
+<!-- ============ DEER AND THE DOVE ============ -->
+<section id="dd">
+  <div class="sec-kick">Stop One · Dinner, 7:00 PM</div>
+  <h2>The Deer and the Dove</h2>
+  <div class="addr">155 Sycamore St, on the square · <a href="https://maps.apple.com/?q=The+Deer+and+the+Dove+Decatur">Directions</a> · <a href="https://www.deerdove.com">deerdove.com</a></div>
+
+  <div class="card">
+    <span class="tag">James Beard: Best Chef Southeast '23</span><span class="tag">Michelin Guide</span><span class="tag">Whole-animal, wood-fired</span>
+    <h3>The read</h3>
+    <p>Terry Koval's farm-obsessed, hearth-driven flagship — the consensus pick for <strong>the best kitchen in Decatur</strong>. In-house butchery, house salumi, and a menu that name-checks its farms because the sourcing genuinely is the point. The Infatuation calls it <em>the</em> place in Atlanta for wild game; Michelin praises the rustic wood-fire cooking. The room is warm and unfussy — this is fine-dining ingredients with neighborhood-restaurant manners. It's game-heavy by design: rabbit, squab, venison, pheasant. Lean in.</p>
+  </div>
+
+  <div class="card">
+    <h3>How to order for four</h3>
+    <p><strong>Open with (share everything):</strong></p>
+    <ul class="recs">
+      <li class="row"><span><span class="d">Salted yeast rolls</span> — non-negotiable, order at hello</span><span class="price">$8</span></li>
+      <li class="row"><span><span class="d">Burrata + GA peaches</span> — peak-July Georgia on a plate</span><span class="price">$19</span></li>
+      <li class="row"><span><span class="d">Chicken liver paté, peach jam</span> — a signature; reviewers' constant</span><span class="price">$18</span></li>
+      <li class="row"><span><span class="d">Beef tartare</span> — ribeye tartare w/ gribiche + focaccia</span><span class="price">$29</span></li>
+    </ul>
+    <p style="margin-top:12px"><strong>Mains — the game plan:</strong></p>
+    <ul class="recs">
+      <li class="row"><span><span class="d">Woodfired Half Rabbit</span> — the signature. Legs + loin, herb risotto, Benton's ham. If the table shares one showpiece, it's this</span><span class="price">$57</span></li>
+      <li class="row"><span><span class="d">Dry-Aged Duck</span> — smoked breast + paté en croûte + foie; the dish critics write home about</span><span class="price">$59</span></li>
+      <li class="row"><span><span class="d">Bucatini, chanterelles + sungolds</span> — the "safe" order that isn't; great for Lisa if game's not her thing</span><span class="price">$32</span></li>
+      <li class="row"><span><span class="d">Whole Trout</span> — Georgia trout, green garlic butter; the light option</span><span class="price">$42</span></li>
+    </ul>
+    <div class="verdict"><span class="serif">Feeling festive?</span> The 40-day dry-aged Côte de Boeuf ($195) feeds the table with bone marrow and duck-fat potatoes — but it crowds out the game dishes that make this place <em>this place</em>. I'd skip it tonight.</div>
+  </div>
+
+  <div class="card">
+    <h3>Wine by the glass — value calls</h3>
+    <p>I ran the list against retail. Standard markup here is ~3× retail per bottle; anything near 2× is a gift. Dots = value.</p>
+    <ul class="recs">
+      <li class="row"><span><span class="d">Nino Negri "Quadrio" Valtellina Nebbiolo</span> <span class="meter"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><br>Alpine Nebbiolo ~$22 retail — Barolo character at a Chianti price. <strong>Best red value on the list.</strong> Pairs with rabbit AND duck</span><span class="price">$15 gl</span></li>
+      <li class="row"><span><span class="d">Cantina Terlano Pinot Bianco "Tradition"</span> <span class="meter"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><br>Benchmark Alto Adige producer (~$27 retail). Weight + minerality; drinks above its price. <strong>Best white value.</strong> Trout/scallops/burrata</span><span class="price">$17 gl</span></li>
+      <li class="row"><span><span class="d">Peppoli Chianti Classico (Antinori)</span> <span class="meter"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><br>~$30 retail, so the <em>bottle</em> at $64 is barely 2× — the sneaky whole-bottle play for the table</span><span class="price">$16 / $64</span></li>
+      <li class="row"><span><span class="d">Lambrusco "Nicchia"</span> <span class="meter"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><br>Cheapest bubbles, and dry Lambrusco + salumi/paté is a canonical pairing. Open with a round</span><span class="price">$13 gl</span></li>
+      <li class="row"><span><span class="d">Vidiano "Dafnios" (Crete)</span> <span class="meter"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><br>The adventurous-cheap white; stone fruit + salinity</span><span class="price">$14 gl</span></li>
+      <li class="row"><span><span class="d">Skip:</span> Gruet "Sauvage" at $19/gl (~$22 retail — worst ratio on the page) and the Aglianico at $20/gl unless you specifically want big + brooding</span></li>
+    </ul>
+    <div class="verdict"><span class="serif">Bottle flex, if the night earns it:</span> Scavino "Barolo Albe" at <strong>$105</strong> (~$60 retail — under 2×, real Barolo) or Billecart-Salmon "Sous Bois" Champagne at <strong>$195</strong> (~$115 retail — for a restaurant list, genuinely fair).</div>
+  </div>
+
+  <div class="card">
+    <h3>Dessert & digestifs at the table</h3>
+    <p><strong>Desserts:</strong> Crème caramel with sorghum ($10) is the pastry chef's quiet flex; chocolate fudge cake w/ cornflake ice cream ($14) for the table's chocolate vote. French press for two is $7.75 — spike it with their house coffee liqueur.</p>
+    <p><strong>Amari — value math on the pour:</strong></p>
+    <ul class="recs">
+      <li class="row"><span><span class="d">Cynar or Amaro CioCiaro</span> — cheapest pours, both excellent digestifs. CioCiaro is the insider's Averna (which is $16 here)</span><span class="price">$11</span></li>
+      <li class="row"><span><span class="d">Eda Rhyne Amaro Oscura or Nocino</span> — small Asheville distillery, hard to find at retail. This is what "worth ordering out" means</span><span class="price">$14</span></li>
+      <li class="row"><span><span class="d">Murrell's Row Barrel-Rested Eno</span> — made in Atlanta, barrel-aged, can't buy it easily. The local-flex pour</span><span class="price">$18</span></li>
+      <li class="row"><span><span class="d">PX Sherry + the crème caramel</span> — the best $24 dessert-pairing move on both menus</span><span class="price">$14</span></li>
+      <li class="row"><span><span class="d">Skip Braulio ($16) & Fernet ($12)</span> — they're on your own bar shelf at home. Order what you can't pour yourself</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ AFTER ============ -->
+<section id="after">
+  <div class="sec-kick">Stop Two · Choose Your Ending</div>
+  <h2>Tiki, Dessert, Bar, or Live Music</h2>
+  <div class="addr">All within a 6-minute walk of the square.</div>
+
+  <div class="pick bar" style="background:linear-gradient(140deg,#1f3128,var(--card))">
+    <div class="lab">Option A · Nightcap, Island-Style</div>
+    <h3>🍹 S.O.S. Tiki Bar</h3>
+    <p>340 W Ponce Court / Church St side · 4-min walk</p>
+    <p>Decatur's basement-vibe tiki den — blackout-dark, bamboo, shelves of collectible mugs (they'll sell you one), and a rum list far more serious than the décor lets on. Reviews consistently praise <strong>hand-built, properly boozy tiki drinks</strong>; big comfy booths make it easy for four to keep talking. The move post-dinner: <strong>Jungle Bird</strong> for you (rum + Campari — the amaro-lover's tiki drink, basically a digestif in a mug), <strong>Mai Tai</strong> as the benchmark, <strong>Zombie</strong> only if Charlie's committed to the bit.</p>
+    <p class="why"><strong>Pick this if:</strong> the table wants one more real drink with maximum fun and zero pretense. Gets loud and full late on weekends — the earlier you land, the better the booth.</p>
+    <a class="mapbtn" href="https://maps.apple.com/?q=SOS+Tiki+Bar+Decatur+GA">Map it</a>
+  </div>
+
+  <div class="pick dessert">
+    <div class="lab">Option B · Dessert</div>
+    <h3>🍦 Butter & Cream</h3>
+    <p>105 E Ponce de Leon Ave · 2-min walk</p>
+    <p>Decatur's beloved small-batch ice cream shop — everything churned in-house. The move: <strong>brown butter brittle</strong> or a seasonal fruit flavor, in a fresh waffle cone, eaten walking the square.</p>
+    <p class="why"><strong>Pick this if:</strong> dinner ran heavy on wine and you want air, a stroll, and a 20-minute nightcap-lite. Note: closes 10 PM most nights — it's the early-exit option.</p>
+    <a class="mapbtn" href="https://maps.apple.com/?q=Butter+and+Cream+Decatur">Map it</a>
+  </div>
+
+  <div class="pick bar">
+    <div class="lab">Option C · One More Proper Drink</div>
+    <h3>🥂 Kimball House</h3>
+    <p>303 E Howard Ave · 6-min walk (old train depot)</p>
+    <p>One of the South's great cocktail bars — a restored 1891 depot with an absinthe program, deep classics, and a late oyster happy hour some nights. Reviewers rank the after-dinner cocktails among Atlanta's best; if the four of you want one impeccable drink in a gorgeous room, it's not close.</p>
+    <p class="why"><strong>Pick this if:</strong> the conversation's too good to stop. Backup on the square: <strong>Brick Store Pub's upstairs Belgian bar</strong> — candlelit, quiet, 100+ bottle list, zero TVs.</p>
+    <a class="mapbtn" href="https://maps.apple.com/?q=Kimball+House+Decatur">Map it</a>
+  </div>
+
+  <div class="pick music">
+    <div class="lab">Option D · Live Music — Tonight's Show</div>
+    <h3>🎸 Eddie's Attic: Song Cycles</h3>
+    <p>515-B N McDonough St · 3-min walk · <strong>Doors 8:45 · Show 9:00 PM</strong></p>
+    <p>The legendary listening room (John Mayer and Sugarland played early sets here) hosts <strong>Song Cycles</strong> — an Atlanta songwriter showcase where five writers each play their own catalogue <em>plus one brand-new song written to a shared theme, debuted live</em>. Intimate room, respectful listening crowd — perfect timing off a 7:00 dinner.</p>
+    <p class="why"><strong>Tonight's lineup — hear them before you go:</strong></p>
+    <ul class="recs" style="margin-bottom:12px">
+      <li class="row"><span><span class="d">Rose Hotel</span> (Jordan Reynolds) — dreamy indie-folk, Angel Olsen/Jessica Pratt lineage. The headliner-caliber pen here · <a href="https://rosehotel.bandcamp.com" style="color:var(--gold)">Listen</a></span></li>
+      <li class="row"><span><span class="d">Nikki & the Phantom Callers</span> (Nikki Speake) — Southern-gothic honky-tonk, '60s-pop jangle · <a href="https://open.spotify.com/artist/5S5MhG7ZvwNklFrfFPJUNz" style="color:var(--gold)">Listen</a></span></li>
+      <li class="row"><span><span class="d">Laurie Ray</span> — of Equal Creatures; Americana craft with grunge grit · <a href="https://equalcreatures.bandcamp.com" style="color:var(--gold)">Listen</a></span></li>
+      <li class="row"><span><span class="d">Seth Brown</span> — of Knelt; psych-folk, Townes/Tweedy/Lenker school · <a href="https://open.spotify.com/artist/6CpIG3ix1DpFG9clFBaQtj" style="color:var(--gold)">Listen</a></span></li>
+      <li class="row"><span><span class="d">Huey</span> — of Huey & the Heaven-sent; Southern folk, Nick Drake-to-Indigo Girls axis · <a href="https://open.spotify.com/search/Huey%20%26%20The%20Heaven-Sent" style="color:var(--gold)">Listen</a></span></li>
+    </ul>
+    <p class="why"><strong>Pick this if:</strong> you want the memorable-night option — songwriters-in-the-round is exactly what this room was built for. Buy tickets before dinner.</p>
+    <a class="mapbtn" href="https://eddiesattic.com">Tickets · eddiesattic.com</a>
+  </div>
+
+  <div class="verdict" style="margin-top:18px"><span class="serif">My recommendation:</span> Song Cycles at 9 is the play — doors at 8:45 give you a graceful dinner exit, and new-songs-debuted-live is a genuinely rare format. If the table votes drinks instead, S.O.S. for a Jungle Bird round (it doubles as your digestif, so go lighter on the amari at dinner), with Butter & Cream cones for the walk back.</div>
+</section>
+
+<footer>
+  Reviews distilled from Michelin Guide, The Infatuation, Yelp, TripAdvisor & Reddit ·
+  Menu prices from D&D menus dated 06.25.26 ·
+  Built by ClaudeClaw 🪶
+</footer>
+
+</main>
+
+<nav>
+  <a href="#dd" class="on"><span class="ico">🦌</span>Dinner</a>
+  <a href="#after"><span class="ico">🌙</span>After</a>
+</nav>
+
+<script>
+const links=[...document.querySelectorAll('nav a')];
+const secs=['dd','after'].map(id=>document.getElementById(id));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
